@@ -7,6 +7,12 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+h5py = "^3.11.0"
+tensorflow = "^2.16.2"
+deepface = "^0.0.92"
+tf-keras = "^2.16.0"
+mypy = "^1.10.1"
+black = "^24.4.2"
 
 [tool.poetry.group.dev.dependencies]
 wemake-python-styleguide = "^0.19.2"
