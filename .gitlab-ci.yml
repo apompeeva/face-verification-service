@@ -4,7 +4,7 @@ default:
     - curl -sSL https://install.python-poetry.org | python3 - --git https://github.com/python-poetry/poetry.git@main
     - export PATH="$HOME/.local/bin:$PATH"
     - apt-get update && apt-get -y upgrade
-    - apt-get install pkg-config libhdf5-100 libhdf5-dev
+    - apt-get install pkg-config libhdf5-hl-100 libhdf5-dev
     - poetry install
 
 stages:
