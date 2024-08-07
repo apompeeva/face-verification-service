@@ -1,6 +1,6 @@
 import pytest
 
-from app.service import FaceVerificationService
+from app.core.service import FaceVerificationService
 
 
 @pytest.mark.parametrize('path', (
