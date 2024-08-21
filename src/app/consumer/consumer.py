@@ -43,7 +43,10 @@ class Consumer:
         async for msg in self.__consumer:
             msg_value = await self.decompress(msg.value)
             user_id, img_path = msg_value.split(':')
-            embedding = FaceVerificationService.verify_user(img_path, int(user_id))
+            embedding = await FaceVerificationService.verify_user(
+                img_path,
+                int(user_id),
+            )
             if embedding is not None:
                 logging.info(f"face_vector: {str(embedding[0]['embedding'])}")
             else:
