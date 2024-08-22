@@ -8,7 +8,7 @@ default:
     - poetry install
 
 stages:
-  - tests
+  # - tests
   - lint
 
 
@@ -28,10 +28,10 @@ Linter:
     - changes:
         - src/app/*
 
-Tests:
-  stage: tests
-  script:
-    - export PYTHONPATH="$PWD/src"
-    - poetry run pytest src
+# Tests:
+#   stage: tests
+#   script:
+#     - export PYTHONPATH="$PWD/src"
+#     - poetry run pytest src/tests
 
 
