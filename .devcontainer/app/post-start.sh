@@ -14,7 +14,11 @@ if [ "$SYNC_LOCALHOST_KUBECONFIG" = "true" ] && [ -d "/usr/local/share/kube-loca
     sed -i -e "s|/Users/[a-z]\+\(/.kube/.*\)|$HOME\1|gm" $HOME/.kube/config
 fi
 
+apt-get update && apt-get -y upgrade
+apt-get install -y pkg-config libhdf5-hl-100 libhdf5-dev ffmpeg libsm6 libxext6
+
 # Конфигурация poetry
+
 poetry config virtualenvs.create true
 poetry config virtualenvs.in-project true
 mkdir -p ~/.oh-my-zsh/plugins/poetry

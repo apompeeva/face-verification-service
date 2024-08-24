@@ -1,18 +1,20 @@
-from fastapi import FastAPI
-
-from app.endpoints.endpoints import face_verification_router
-from app.consumer.consumer import consumer
-from contextlib import asynccontextmanager
 import asyncio
 import logging
+from contextlib import asynccontextmanager
+
+from fastapi import FastAPI
+
+from app.consumer.consumer import consumer
+from app.endpoints.endpoints import face_verification_router
+
 logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    """Запуск консьюмера перед стартом приложения и удаление после."""
     try:
-        logging.info("Starting up...")
         await consumer.start()
         asyncio.create_task(consumer.consume())
         yield
