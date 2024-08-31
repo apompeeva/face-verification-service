@@ -23,7 +23,7 @@ class FaceVerificationService:
         await add_vector(
             {
                 'user_id': user_id,
-                'embedding': str(embedding[0]['embedding']),
+                'vector': str(embedding[0]['embedding']),
                 'path_to_image': img_path,
             },
         )

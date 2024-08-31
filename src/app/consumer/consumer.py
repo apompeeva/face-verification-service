@@ -42,7 +42,7 @@ class Consumer:
         """Получение и печать сообщения от Kafka."""
         async for msg in self.__consumer:
             msg_value = await self.decompress(msg.value)
-            user_id, img_path = msg_value.split(':')
+            user_id, img_path = msg_value.split('@')
             embedding = await FaceVerificationService.verify_user(
                 img_path,
                 int(user_id),

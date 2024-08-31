@@ -1,7 +1,7 @@
 import datetime
 from typing import Annotated
 
-from sqlalchemy import DateTime, ForeignKey, Integer, MetaData, String, Table, text
+from sqlalchemy import DateTime, ForeignKey, Integer, MetaData, String, Table, Text, text
 from sqlalchemy.orm import Mapped, mapped_column, registry
 
 from app.database import Base, sync_engine
@@ -17,7 +17,7 @@ class FaceDataModel(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     user_id: Mapped[int] = mapped_column(Integer, ForeignKey('auth_schema.users.id'))
-    vector: Mapped[str] = mapped_column(String(length=1024))
+    vector: Mapped[str] = mapped_column(Text)
     path_to_image: Mapped[str] = mapped_column(String(length=1024))
     creation_time: Mapped[Annotated[datetime.datetime, mapped_column(
         DateTime(timezone=True), server_default=text("TIMEZONE('utc', now())"),

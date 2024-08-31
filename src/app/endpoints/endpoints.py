@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, status
 
 from app.core.service import FaceVerificationService
+from app.consumer.consumer import consumer
 
 face_verification_router = APIRouter()
 
@@ -15,3 +16,9 @@ async def verify_user(user_id: int, path: str):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, detail='Invalid path',
         )
+
+
+@face_verification_router.get('/healthz/ready')
+async def health_check():
+    """Проверка работоспособности сервиса."""
+    return status.HTTP_200_OK
