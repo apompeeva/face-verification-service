@@ -15,10 +15,7 @@ COPY ./src/app ./app
 
 EXPOSE 8000
 
-COPY ./entrypoint.sh .
 COPY ./alembic.ini  .
 COPY ./src/migration ./src/migration
-COPY ./wait_for_auth.py .
-RUN chmod +x /face_verification/entrypoint.sh
 
-ENTRYPOINT ["sh", "/face_verification/entrypoint.sh"]
+ENTRYPOINT [ "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000" ]
