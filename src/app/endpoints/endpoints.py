@@ -1,7 +1,6 @@
 from fastapi import APIRouter, HTTPException, status
 
 from app.core.service import FaceVerificationService
-from app.consumer.consumer import consumer
 
 face_verification_router = APIRouter()
 
